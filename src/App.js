@@ -3,12 +3,13 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Home from './Pages/Home';
 import About from './Pages/About';
 import Contact from './Pages/Contact';
+import Navbar from './Navbar';
 
 function App() {
   return (
     <Router>
       <div>
-        {/* Navigation */}
+        <Navbar />
         <nav>
           <ul>
             <li><Link to="/">Home</Link></li>
