@@ -7,6 +7,8 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { Container } from 'reactstrap';
 import LoginPage from './Pages/Login';
 
+import Contact from './Pages/Contact';
+import Navbar from './Navbar';
 
 function App() {
   return (
@@ -14,6 +16,14 @@ function App() {
       <div>
         {/* Authenticated */}
         <Authenticated />
+        <Navbar />
+        <nav>
+          <ul>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/about">About</Link></li>
+            <li><Link to="/contact">Contact</Link></li>
+          </ul>
+        </nav>
 
         {/* Content */}
         <Routes>
@@ -26,7 +36,7 @@ function App() {
 }
 
 function Authenticated() {
-  const {isAuthenticated} = useAuth0();
+  const { isAuthenticated } = useAuth0();
 
   if (!isAuthenticated) {
     return <LoginPage />;
