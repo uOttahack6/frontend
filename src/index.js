@@ -5,11 +5,15 @@ import './index.css';
 import { AuthProvider } from './utils/AuthProvider';
 import reportWebVitals from './reportWebVitals';
 import "./Navbar.css"
+import "bootstrap/dist/js/bootstrap.bundle.min";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-ReactDOM.render(
-  <AuthProvider
-  >
-    <App />
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <AuthProvider>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
   </AuthProvider>,
   document.getElementById('root')
 );

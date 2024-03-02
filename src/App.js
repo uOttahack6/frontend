@@ -9,6 +9,9 @@ import LoginPage from './Pages/Login';
 
 import Contact from './Pages/Contact';
 import Navbar from './Navbar';
+import Leaderboards from './Pages/Leaderboards';
+import Upload from './Pages/Upload';
+import Tips from './Pages/Tips';
 
 function App() {
   return (
@@ -17,18 +20,14 @@ function App() {
         {/* Authenticated */}
         <Authenticated />
         <Navbar />
-        <nav>
-          <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/about">About</Link></li>
-            <li><Link to="/contact">Contact</Link></li>
-          </ul>
-        </nav>
 
         {/* Content */}
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/upload" element={<Upload />} />
+          <Route path="/leaderboards" element={<Leaderboards />} />
+          <Route path="/tips" element={<Tips />} />
         </Routes>
       </div>
     </Router>
