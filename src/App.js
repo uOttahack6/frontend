@@ -17,21 +17,31 @@ const App = () => {
         {/* Navbar */}
         <nav>
           <ul>
-            <li>
-              <Link to="/home">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            {/* Conditionally render login button */}
-            {!isAuthenticated && (
-              <li>
-                <LoginButton />
-              </li>
+           
+          {isAuthenticated && (
+              <>
+                <li>
+                  <Link to="/home">Home</Link>
+                </li>
+                <li>
+                  <Link to="/about">About</Link>
+                </li>
+                <li>
+                  <LogoutButton />
+                </li>
+
+                <LogoutButton></LogoutButton>
+              </>
             )}
 
-            <LogoutButton></LogoutButton>
-          </ul>
+            </ul>
+
+            {/* Conditionally render login button */}
+            {!isAuthenticated && (
+             
+                <LoginButton />
+            
+            )}
         </nav>
 
         {/* Content */}
