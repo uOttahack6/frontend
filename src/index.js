@@ -6,9 +6,12 @@ import { AuthProvider } from './utils/AuthProvider';
 import reportWebVitals from './reportWebVitals';
 import "./Navbar.css"
 
-ReactDOM.render(
-  <AuthProvider
-  >
+import "bootstrap/dist/js/bootstrap.bundle.min";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <AuthProvider>
     <App />
   </AuthProvider>,
   document.getElementById('root')

@@ -1,12 +1,12 @@
 import React from 'react';
 
-function Contact() {
+function Leaderboards() {
   return (
     <div>
-      <h2>Contact</h2>
+      <h2>Leadership boards</h2>
       <p>Contact us page content.</p>
     </div>
   );
 }
 
-export default Contact;
+export default Leaderboards;
