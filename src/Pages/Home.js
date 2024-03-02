@@ -1,6 +1,6 @@
 import React from 'react';
-import "bootstrap/dist/js/bootstrap.bundle.min";
-import "bootstrap/dist/css/bootstrap.min.css";
+//import "bootstrap/dist/js/bootstrap.bundle.min";
+//import "bootstrap/dist/css/bootstrap.min.css";
 
 function Home() {
   return (
@@ -14,7 +14,9 @@ function Home() {
             <div class="card-header">
               Sustainability Task of the Day
             </div>
+            <div class="card-body">
               Words
+            </div>
           </div>
         </div>
         <div class="col-sm-5">
