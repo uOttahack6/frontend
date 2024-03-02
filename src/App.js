@@ -1,33 +1,49 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+
 import Home from './Pages/Home';
 import About from './Pages/About';
-import Contact from './Pages/Contact';
-import Navbar from './Navbar';
+import { useAuth0 } from '@auth0/auth0-react';
+import { Container } from 'reactstrap';
+import LoginButton from './utils/LoginButton';
+import LogoutButton from './utils/LogoutButton';
 
-function App() {
+const App = () => {
+  const { isAuthenticated } = useAuth0();
+
   return (
     <Router>
-      <div>
-        <Navbar />
+      <div id="app" className="d-flex flex-column h-100">
+        {/* Navbar */}
         <nav>
           <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/about">About</Link></li>
-            <li><Link to="/contact">Contact</Link></li>
+            <li>
+              <Link to="/home">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            {/* Conditionally render login button */}
+            {!isAuthenticated && (
+              <li>
+                <LoginButton />
+              </li>
+            )}
+
+            <LogoutButton></LogoutButton>
           </ul>
         </nav>
 
         {/* Content */}
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-        
+        <Container className="flex-grow-1 mt-5">
+          <Routes>
+            <Route exact path="/home" element={<Home />} />
+            <Route path="/about" element={<About />} />
+          </Routes>
+        </Container>
       </div>
     </Router>
   );
-}
+};
 
 export default App;
