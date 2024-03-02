@@ -1,19 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
-import { Auth0Provider } from '@auth0/auth0-react';
+import './index.css';
+import { AuthProvider } from './utils/AuthProvider';
 
 ReactDOM.render(
-  <Auth0Provider
-    domain="dev-q5cxatome4mralfv.us.auth0.com"
-    clientId="ufiJfge4Wq9AW8yLprDy1592yO7LLyVN"
-    authorizationParams={{
-      redirect_uri: window.location.origin
-    }}
-  >
+  <AuthProvider>
     <App />
-  </Auth0Provider>,
+  </AuthProvider>,
   document.getElementById('root')
 );
 
