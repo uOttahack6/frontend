@@ -34,7 +34,7 @@ function Leaderboards(props) {
   }
   return (
     <div className='container'>
-      <h2 className="my-5">Leadership boards</h2>
+      <h2 className="my-5">Leaderboards</h2>
       <div className="row">
         <div className="col-sm-6">
           <div className="card">
