@@ -10,6 +10,7 @@ import Navbar from './Navbar';
 import Leaderboards from './Pages/Leaderboards';
 import Upload from './Pages/Accomplishments';
 import Tips from './Pages/Tips';
+import Callback from './Pages/Callback';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/upload" element={<Upload />} />
           <Route path="/leaderboards" element={<Leaderboards />} />
           <Route path="/tips" element={<Tips />} />
+          <Route path="/callback" element={<Callback />} />
         </Routes>
       </div>
 
