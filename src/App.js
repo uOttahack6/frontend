@@ -24,8 +24,10 @@ function App() {
       setMessages(messages => [...messages, JSON.parse(message.payloadString)]);
       if (message.destinationName === "ScheduledTasks") {
         setTasks(JSON.parse(message.payloadString));
+        console.log("Tasks updated: ", JSON.parse(message.payloadString));
       } else if (message.destinationName === "Leaderboard") {
         setLeaderboard(JSON.parse(message.payloadString));
+        console.log("Leaderboard updated: ", JSON.parse(message.payloadString));
       }
     };
     messaging.register(handleMessage);
