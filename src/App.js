@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Home from './Pages/Home';
 import Navbar from './Navbar';
 import Leaderboards from './Pages/Leaderboards';
-import Upload from './Pages/Upload';
+import Upload from './Pages/Accomplishments';
 import Tips from './Pages/Tips';
 
 function App() {
