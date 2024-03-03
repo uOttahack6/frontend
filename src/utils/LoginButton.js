@@ -11,7 +11,7 @@ const LoginButton = () => {
   };
 
   return (
-    <Button onClick={handleLogin}>Login</Button>
+    <Button color="success" onClick={handleLogin}>Login</Button>
   );
 };
 
