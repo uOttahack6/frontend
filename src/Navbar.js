@@ -3,10 +3,13 @@ export default function Navbar() {
         <a href="/" className="site-title"> BetterTranspo </a>
         <ul>
             <li>
-                <a href="/add">Add Route</a>
+                <a href="/leaderboards">Leaderboards</a>
             </li>
             <li>
-                <a href="/favs">See Favourite Route</a>
+                <a href="/upload">Upload Accomplishments</a>
+            </li>
+            <li>
+                <a href="/tips">Tips</a>
             </li>
         </ul>
     </nav>
