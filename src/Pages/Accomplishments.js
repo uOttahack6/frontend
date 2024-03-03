@@ -3,7 +3,7 @@ import "../Styles/Acccomplishment.css";
 import { Container, Card, Form, Button, Col } from "react-bootstrap";
 
 const Accomplishments = (props) => {
-  const dailyList = props.messages
+  const dailyList = props.tasks
   const [selectedFiles, setSelectedFiles] = useState([]);
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const fileInputRef = useRef();
