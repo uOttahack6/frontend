@@ -33,10 +33,10 @@ function Leaderboards(props) {
     }
   }
   return (
-    <div>
-      <h2 className="my-5 mx-4">Leadership boards</h2>
+    <div className='container'>
+      <h2 className="my-5">Leadership boards</h2>
       <div className="row">
-        <div className="col-sm-5 mx-4">
+        <div className="col-sm-6">
           <div className="card">
             <div className="card-header">
               Compare with Friends
@@ -55,7 +55,7 @@ function Leaderboards(props) {
             </div>
           </div>
         </div>
-        <div className="col-sm-5">
+        <div className="col-sm-6">
           <div className="card">
             <div className="card-header">
               Compare with Neighbours
