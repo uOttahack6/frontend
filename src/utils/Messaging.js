@@ -2,14 +2,13 @@ import msgOptions from "./messaging-options";
 import Paho from "paho-mqtt";
 
 const options = msgOptions();
-
 class Messaging extends Paho.Client {
-
     constructor() {
         console.log(options)
         super(options.invocationContext.host, Number(options.invocationContext.port), options.invocationContext.clientId);
         this.onMessageArrived = this.handleMessage.bind(this);
         this.callbacks = [];
+        this.connected = false;
     }
 
     connectWithPromise() {
@@ -34,8 +33,20 @@ class Messaging extends Paho.Client {
 
     // called when a message arrives
     handleMessage(message) {
-        console.log("Received message", message.payloadString);
+        console.log("Received message", message);
         this.callbacks.forEach(callback => callback(message));
+    }
+
+    getMessages() {
+        return this.messages;
+    }
+
+    getConnected() {
+        return this.connected;
+    }
+
+    setConnected(connected) {
+        this.connected = connected;
     }
 }
 

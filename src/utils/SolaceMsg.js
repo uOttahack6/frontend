@@ -25,7 +25,8 @@ function Msg() {
             messaging.connectWithPromise()
                 .then(response => {
                     console.log("Successfully connected to Solace Cloud.", response);
-                    messaging.subscribe("exampletopic");
+                    messaging.subscribe("ScheduledTasks");
+                    messaging.subscribe("Leaderboard");
                     setConnected(true);
                 })
                 .catch(error => {
