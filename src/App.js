@@ -8,7 +8,7 @@ import LoginPage from './Pages/Login';
 
 import Navbar from './Navbar';
 import Leaderboards from './Pages/Leaderboards';
-import Upload from './Pages/Upload';
+import Upload from './Pages/Accomplishments';
 import Tips from './Pages/Tips';
 
 function App() {
