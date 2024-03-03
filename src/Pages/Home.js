@@ -9,7 +9,7 @@ function Home() {
   useEffect(() => {
     const fetchTotalScore = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/users/1/total-score');
+        const response = await axios.get('http://localhost:5000/api/private/getScore');
         const data = response.data;
         setTotalScore(data.totalScore);
       } catch (error) {
@@ -64,4 +64,3 @@ function Home() {
 }
 
 export default Home;
-
