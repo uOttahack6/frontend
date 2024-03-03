@@ -5,10 +5,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import LogoutButton from '../utils/LogoutButton';
 import messaging from '../utils/Messaging';
 
-function Home() {
+function Home(props) {
+  const connected = props.connected;
+  const setConnected = props.setConnected;
+  const messages = props.messages;
+  const setMessages = props.setMessages;
   const [totalScore, setTotalScore] = useState(null);
-  const [connected, setConnected] = useState(messaging.getConnected());
-  const [messages, setMessages] = useState([]);
   useEffect(() => {
     const fetchTotalScore = async () => {
       try {
@@ -19,11 +21,7 @@ function Home() {
         console.error('Error fetching total score:', error.message);
       }
     };
-    const handleMessage = (message) => {
-      setMessages(JSON.parse(message.payloadString));
-    };
 
-    messaging.register(handleMessage);
     fetchTotalScore();
   }, []); // Empty dependency array to run the effect only once
 
