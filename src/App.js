@@ -12,7 +12,7 @@ function App() {
   return (
     <Router>
       <div>
-        {/* Navigation */}
+        {/* Authenticated */}
         <Authenticated />
 
         {/* Content */}
