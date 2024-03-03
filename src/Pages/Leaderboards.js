@@ -1,26 +1,56 @@
 import React from 'react';
-function Leaderboards() {
+function Leaderboards(props) {
+  const leaderboard = props.leaderboard;
+  let leaderboard1 = [];
+  let leaderboard2 = [];
+  // Iterate through the original array
+  for (let i = 0; i < leaderboard.length; i++) {
+    // Check if the index is even or odd
+    if (i % 2 === 0) {
+      leaderboard1.push(leaderboard[i]); // Even index
+    } else {
+      leaderboard2.push(leaderboard[i]); // Odd index
+    }
+  }
   return (
     <div>
-      <h2 class="my-5 mx-4">Leadership boards</h2>
-      <div class="row">
-        <div class="col-sm-5 mx-4">
-          <div class="card">
-            <div class="card-header">
+      <h2 className="my-5 mx-4">Leadership boards</h2>
+      <div className="row">
+        <div className="col-sm-5 mx-4">
+          <div className="card">
+            <div className="card-header">
               Compare with Friends
             </div>
-            <div class="card-body">
-              list of names by points
+            <div className="container">
+              {leaderboard1.map((user, index) => (
+                <div key={index} className="row">
+                  <div className="col-8">
+                    <p className="fs-5">{user.username}</p>
+                  </div>
+                  <div className="col-4">
+                    <p className="fs-5">{user.totalscore} points</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
-        <div class="col-sm-5">
-          <div class="card">
-            <div class="card-header">
+        <div className="col-sm-5">
+          <div className="card">
+            <div className="card-header">
               Compare with Neighbours
             </div>
-            <div class="card-body">
-              list of names by points
+            <div className="container">
+              {leaderboard2.map((user, index) => (
+                <div key={index} className="row">
+                  <div className="col-8">
+                    <p className="fs-5">{user.username}</p>
+                  </div>
+                  <div className="col-4">
+                    <p className="fs-5">{user.totalscore} points</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
