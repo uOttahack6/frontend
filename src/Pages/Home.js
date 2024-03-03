@@ -57,13 +57,13 @@ function Home(props) {
   };
 
   return (
-    <div>
+    <div className='container mt-3'>
       <button onClick={handleConnectClick}>{connected ? 'Disconnect' : 'Connect'}</button>
-      <h5 className="mx-5 my-5">
-        Sustainability Points: {totalScore ? totalScore : 'Loading...'}
-      </h5>
-      <div className="row">
-        <div className="col-5 mx-5">
+      <div className='row my-3'>
+        <h5 className="my-5 col-lg-6">
+          Sustainability Points: {totalScore ? totalScore : 'Loading...'}
+        </h5>
+        <div className="col-lg-6 col-sm-12">
           <div className="card">
             <div className="card-header">
               Sustainability Task of the Day
@@ -76,7 +76,22 @@ function Home(props) {
             ))}
           </div>
         </div>
-        <div className="col-5 mx-5">
+      </div>
+
+
+      <div className="row my-4">
+        <div className="card col-lg-6 col-sm-12">
+          <div className="card-header">
+            Daily Quest
+          </div>
+          {tasks.filter(message => message.tasktype === 'daily').map((message, index) => (
+            <div key={index} className="card-body">
+              <h5 className="card-title">{message.taskname}</h5>
+              <p className="card-text">{message.taskdescription}</p>
+            </div>
+          ))}
+        </div>
+        <div className="col-lg-6 col-sm-12">
           <div className="card">
             <div className="card-header">
               Long Term Quests
@@ -89,17 +104,6 @@ function Home(props) {
             ))}
           </div>
         </div>
-      </div>
-      <div className="card col-5 mx-5 my-5">
-        <div className="card-header">
-          Daily Quest
-        </div>
-        {tasks.filter(message => message.tasktype === 'daily').map((message, index) => (
-          <div key={index} className="card-body">
-            <h5 className="card-title">{message.taskname}</h5>
-            <p className="card-text">{message.taskdescription}</p>
-          </div>
-        ))}
       </div>
     </div>
   );

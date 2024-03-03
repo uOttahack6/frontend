@@ -15,6 +15,11 @@ const Accomplishments = (props) => {
     setSelectedFiles([...selectedFiles, ...files]);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert("Submitted");
+  };
+
   return (
     <Container>
       <div className="d-flex justify-content-center mt-5">
@@ -25,7 +30,7 @@ const Accomplishments = (props) => {
             </Card.Title>
           </Card.Header>
           <Card.Body>
-            <Form>
+            <Form onSubmit={handleSubmit}>
               {dailyList.map((task) => (
                 <div>
                   <div key={task.taskid} className="row">
@@ -70,7 +75,7 @@ const Accomplishments = (props) => {
       </div>
       <div className="row mt-5">
         {selectedFiles.map((file, index) => (
-          <Col key={index} className="d-flex mb-4">
+          <Col key={index} className="d-flex sm-6 ">
             <Card style={{ width: '18rem' }}>
               <Card.Img
                 variant="top"
