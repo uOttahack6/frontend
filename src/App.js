@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 import Home from './Pages/Home';
@@ -32,7 +32,18 @@ function App() {
 }
 
 function Authenticated() {
-  const {isAuthenticated} = useAuth0();
+  const {isAuthenticated, isLoading} = useAuth0();
+  const [authLoaded, setAuthLoaded] = React.useState(false);
+
+  useEffect(() => {
+    if (!isLoading) {
+      setAuthLoaded(true);
+    }
+  }, [isLoading]);
+
+  if (!authLoaded || isLoading) {
+    return null;
+  }
 
   if (!isAuthenticated) {
     return <LoginPage />;

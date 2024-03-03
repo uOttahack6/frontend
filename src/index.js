@@ -4,10 +4,7 @@ import App from './App';
 import './index.css';
 import { AuthProvider } from './utils/AuthProvider';
 import reportWebVitals from './reportWebVitals';
-import "./Navbar.css"
 
-import "bootstrap/dist/js/bootstrap.bundle.min";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 ReactDOM.render(
   <AuthProvider
