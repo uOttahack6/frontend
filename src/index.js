@@ -5,7 +5,8 @@ import './index.css';
 import { AuthProvider } from './utils/AuthProvider';
 
 ReactDOM.render(
-  <AuthProvider>
+  <AuthProvider
+  >
     <App />
   </AuthProvider>,
   document.getElementById('root')
