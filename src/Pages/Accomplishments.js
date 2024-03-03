@@ -1,6 +1,6 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import "../Styles/Acccomplishment.css";
-import { Container, Card, Form, Button } from "react-bootstrap";
+import { Container, Card, Form, Button, Col } from "react-bootstrap";
 const dailyList = [
   {
     id: 1,
@@ -21,11 +21,15 @@ const dailyList = [
 ];
 
 const Accomplishments = () => {
+  const [selectedFiles, setSelectedFiles] = useState([]);
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const fileInputRef = useRef();
   const upload = () => {
-    // Trigger the file input
     fileInputRef.current.click();
+  };
+  const handleFileChange = (e) => {
+    const files = Array.from(e.target.files);
+    setSelectedFiles([...selectedFiles, ...files]);
   };
 
   return (
@@ -40,7 +44,7 @@ const Accomplishments = () => {
           <Card.Body>
             <Form>
               {dailyList.map((task) => (
-                <Form.Group key={task.id} className="mb-3">
+                <Form.Group key={task.id} className="mb-3 fs-5">
                   <Form.Check
                     type="radio"
                     id={`${task.id}`}
@@ -50,7 +54,7 @@ const Accomplishments = () => {
                 </Form.Group>
               ))}
               <div className="d-flex justify-content-evenly">
-                <Button variant="secondary" type="submit" id="Submit">
+                <Button variant="success" type="submit" id="Submit">
                   Submit
                 </Button>
                 <input
@@ -59,9 +63,10 @@ const Accomplishments = () => {
                   className="form-control"
                   style={{ display: "none" }}
                   ref={fileInputRef}
+                  onChange={handleFileChange}
                 />
                 <label htmlFor="fileInput">
-                  <Button variant="secondary" onClick={upload}>
+                  <Button variant="success" onClick={upload}>
                     Upload a photo
                   </Button>
                 </label>
@@ -70,16 +75,27 @@ const Accomplishments = () => {
           </Card.Body>
         </Card>
       </div>
-      <div className="d-flex mt-5">
-        <Card style={{ width: "18rem" }}>
-          <Card.Img variant="top" src="holder.js/100px180" />
-          <Card.Body>
-            <Card.Title>Card Title</Card.Title>
-            <Card.Text>
-              
-            </Card.Text>
-          </Card.Body>
-        </Card>
+      <div className="row mt-5">
+        {selectedFiles.map((file, index) => (
+          <Col key={index} className="d-flex mb-4">
+            <Card style={{ width: '18rem' }}>
+              <Card.Img
+                variant="top"
+                src={URL.createObjectURL(file)}
+                style={{height: '200px' }}
+                alt={`Uploaded for: ${
+                  dailyList[index % dailyList.length].description
+                }`}
+              />
+              <Card.Body>
+                <Card.Title>
+                  {dailyList[index % dailyList.length].description}
+                </Card.Title>
+                {/* Additional Card text or components */}
+              </Card.Body>
+            </Card>
+          </Col>
+        ))}
       </div>
     </Container>
   );
