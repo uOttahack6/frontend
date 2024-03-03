@@ -48,33 +48,28 @@ function App() {
     }
   }
 
+  const { isAuthenticated } = useAuth0();
+
   return (
     <Router>
       <div>
         {/* Authenticated */}
-        <Authenticated />
-        <Navbar />
-
-        {/* Content */}
-        <Routes>
-          <Route exact path="/" element={<Home tasks={tasks} setMessages={setMessages} connected={connected} setConnected={setConnected} />} />
-          <Route path="/upload" element={<Upload tasks={tasks} />} />
-          <Route path="/leaderboards" element={<Leaderboards leaderboard={leaderboard} />} />
-          <Route path="/tips" element={<Tips />} />
-          <Route path="/callback" element={<Callback />} />
-        </Routes>
+        {!isAuthenticated ? <LoginPage /> :
+          (<div>
+            <Navbar />
+            <Routes>
+              <Route exact path="/" element={<Home tasks={tasks} setMessages={setMessages} connected={connected} setConnected={setConnected} />} />
+              <Route path="/upload" element={<Upload tasks={tasks} />} />
+              <Route path="/leaderboards" element={<Leaderboards leaderboard={leaderboard} />} />
+              <Route path="/tips" element={<Tips />} />
+              <Route path="/callback" element={<Callback />} />
+            </Routes>
+          </div>)
+        }
       </div>
 
     </Router>
   );
-}
-
-function Authenticated() {
-  const { isAuthenticated } = useAuth0();
-
-  if (!isAuthenticated) {
-    return <LoginPage />;
-  }
 }
 
 export default App;
