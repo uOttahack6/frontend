@@ -8,7 +8,7 @@ import messaging from '../utils/Messaging';
 function Home(props) {
   const connected = props.connected;
   const setConnected = props.setConnected;
-  const messages = props.messages;
+  const tasks = props.tasks;
   const setMessages = props.setMessages;
   const [totalScore, setTotalScore] = useState(null);
   useEffect(() => {
@@ -58,7 +58,7 @@ function Home(props) {
             <div className="card-header">
               Sustainability Task of the Day
             </div>
-            {messages.filter(message => message.tasktype === 'totd').map((message, index) => (
+            {tasks.filter(message => message.tasktype === 'totd').map((message, index) => (
               <div key={index} className="card-body">
                 <h5 className="card-title">{message.taskname}</h5>
                 <p className="card-text">{message.taskdescription}</p>
@@ -71,7 +71,7 @@ function Home(props) {
             <div className="card-header">
               Long Term Quests
             </div>
-            {messages.filter(message => message.tasktype === 'long').map((message, index) => (
+            {tasks.filter(message => message.tasktype === 'long').map((message, index) => (
               <div key={index} className="card-body">
                 <h5 className="card-title">{message.taskname}</h5>
                 <p className="card-text">{message.taskdescription}</p>
@@ -84,7 +84,7 @@ function Home(props) {
         <div className="card-header">
           Daily Quest
         </div>
-        {messages.filter(message => message.tasktype === 'daily').map((message, index) => (
+        {tasks.filter(message => message.tasktype === 'daily').map((message, index) => (
           <div key={index} className="card-body">
             <h5 className="card-title">{message.taskname}</h5>
             <p className="card-text">{message.taskdescription}</p>

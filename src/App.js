@@ -16,12 +16,18 @@ import messaging from './utils/Messaging';
 
 function App() {
   const [messages, setMessages] = useState([]);
+  const [tasks, setTasks] = useState([]);
+  const [leaderboard, setLeaderboard] = useState([]);
   const [connected, setConnected] = useState(false);
   useEffect(() => {
     const handleMessage = (message) => {
-      setMessages(JSON.parse(message.payloadString));
+      setMessages(messages => [...messages, JSON.parse(message.payloadString)]);
+      if (message.destinationName === "ScheduledTasks") {
+        setTasks(JSON.parse(message.payloadString));
+      } else if (message.destinationName === "Leaderboard") {
+        setLeaderboard(JSON.parse(message.payloadString));
+      }
     };
-
     messaging.register(handleMessage);
   }, []); // Empty dependency array ensures the effect runs only once
   return (
@@ -33,9 +39,9 @@ function App() {
 
         {/* Content */}
         <Routes>
-          <Route exact path="/" element={<Home messages={messages} setMessages={setMessages} connected={connected} setConnected={setConnected} />} />
-          <Route path="/upload" element={<Upload messages={messages} />} />
-          <Route path="/leaderboards" element={<Leaderboards messages={messages} />} />
+          <Route exact path="/" element={<Home tasks={tasks} setMessages={setMessages} connected={connected} setConnected={setConnected} />} />
+          <Route path="/upload" element={<Upload tasks={tasks} />} />
+          <Route path="/leaderboards" element={<Leaderboards leaderboard={leaderboard} />} />
           <Route path="/tips" element={<Tips />} />
           <Route path="/callback" element={<Callback />} />
         </Routes>
