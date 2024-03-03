@@ -7,7 +7,7 @@ body{
 }
 
 .nav{
-    background-color: #333;
+    background-color: rgb(129, 176, 133);
     color: white;
     display: flex;
     justify-content: space-between;
@@ -17,7 +17,8 @@ body{
 }
 
 .site-title{
-    font-size: 2rem;
+    font-size: 3rem;
+    margin-left: 2%;
 }
 
 .nav ul{
@@ -37,10 +38,7 @@ body{
     padding: .25rem;
 }
 
-.nav li.active {
-    background-color: #555;
-}
-
-.nav li.hover {
-    background-color: #777;
+.nav a:hover {
+    color:rgb(40, 94, 49);
+    background-color: rgb(96, 171, 122);
 }
