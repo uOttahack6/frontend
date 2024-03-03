@@ -1,16 +1,30 @@
-export default function Navbar() {
-    return <nav className="nav">
-        <a href="/" className="site-title"> BetterTranspo </a>
-        <ul>
-            <li>
-                <a href="/leaderboards">Leaderboards</a>
-            </li>
-            <li>
-                <a href="/upload">Upload Accomplishments</a>
-            </li>
-            <li>
-                <a href="/tips">Tips</a>
-            </li>
-        </ul>
-    </nav>
+// Navbar.js
+
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+const Navbar = () => {
+    return (
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+            <Link className="navbar-brand" to="/">BetterTranspo</Link>
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse" id="navbarNav">
+                <ul className="navbar-nav">
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/leaderboards">Leaderboards</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/upload">Upload Accomplishments</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/tips">Tips</Link>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    );
 }
+
+export default Navbar;

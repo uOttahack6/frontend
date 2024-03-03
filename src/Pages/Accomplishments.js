@@ -1,26 +1,9 @@
 import React, { useRef, useState } from "react";
 import "../Styles/Acccomplishment.css";
 import { Container, Card, Form, Button, Col } from "react-bootstrap";
-const dailyList = [
-  {
-    id: 1,
-    description: "task1",
-  },
-  {
-    id: 2,
-    description: "task2",
-  },
-  {
-    id: 3,
-    description: "task3",
-  },
-  {
-    id: 4,
-    description: "task4",
-  },
-];
 
-const Accomplishments = () => {
+const Accomplishments = (props) => {
+  const dailyList = props.messages
   const [selectedFiles, setSelectedFiles] = useState([]);
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const fileInputRef = useRef();
@@ -44,14 +27,24 @@ const Accomplishments = () => {
           <Card.Body>
             <Form>
               {dailyList.map((task) => (
-                <Form.Group key={task.id} className="mb-3 fs-5">
-                  <Form.Check
-                    type="radio"
-                    id={`${task.id}`}
-                    label={`${task.description}`}
-                    name="radioOptions"
-                  />
-                </Form.Group>
+                <div>
+                  <div key={task.taskid} className="row">
+                    <div className="col-8">
+                      <Form.Group key={task.taskid} className="fs-5">
+                        <Form.Check
+                          type="radio"
+                          id={`${task.taskid}`}
+                          label={`${task.taskname}`}
+                          name="radioOptions"
+                        />
+                      </Form.Group>
+                    </div>
+                    <div className="col-4">
+                      <p className="fs-5">{task.taskscore} points</p>
+                    </div>
+                  </div>
+                  <p>{task.taskdescription}</p>
+                </div>
               ))}
               <div className="d-flex justify-content-evenly">
                 <Button variant="success" type="submit" id="Submit">
@@ -82,10 +75,9 @@ const Accomplishments = () => {
               <Card.Img
                 variant="top"
                 src={URL.createObjectURL(file)}
-                style={{height: '200px' }}
-                alt={`Uploaded for: ${
-                  dailyList[index % dailyList.length].description
-                }`}
+                style={{ height: '200px' }}
+                alt={`Uploaded for: ${dailyList[index % dailyList.length].description
+                  }`}
               />
               <Card.Body>
                 <Card.Title>
