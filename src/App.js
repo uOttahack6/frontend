@@ -13,6 +13,7 @@ import Tips from './Pages/Tips';
 import Callback from './Pages/Callback';
 import { useState } from 'react';
 import messaging from './utils/Messaging';
+import axios from 'axios';
 
 function App() {
   const [messages, setMessages] = useState([]);
@@ -32,6 +33,21 @@ function App() {
     };
     messaging.register(handleMessage);
   }, []); // Empty dependency array ensures the effect runs only once
+
+  useEffect(() => {
+    if (messages.length === 0) {
+      askForTasks();
+    }
+  });
+
+  const askForTasks = async () => {
+    try {
+      const response = await axios.get('http://localhost:5000/testing/scheduledTasks');
+    } catch (error) {
+      console.error('Error fetching leaderboard data:', error.message);
+    }
+  }
+
   return (
     <Router>
       <div>

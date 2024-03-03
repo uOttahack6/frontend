@@ -1,6 +1,26 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+
 function Leaderboards(props) {
-  const leaderboard = props.leaderboard;
+  const [leaderboard, setLeaderboard] = useState(props.leaderboard);
+
+  useEffect(() => {
+    if (leaderboard.length === 0) {
+      fetchLeaderboardData();
+    }
+  }, []);
+
+  const fetchLeaderboardData = async () => {
+    try {
+      const response = await axios.get('http://localhost:5000/testing/leaderboard');
+      const data = response.data;
+      setLeaderboard(data);
+    } catch (error) {
+      console.error('Error fetching leaderboard data:', error.message);
+    }
+  };
+
   let leaderboard1 = [];
   let leaderboard2 = [];
   // Iterate through the original array

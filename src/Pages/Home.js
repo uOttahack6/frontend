@@ -10,13 +10,13 @@ function Home(props) {
   const setConnected = props.setConnected;
   const tasks = props.tasks;
   const setMessages = props.setMessages;
-  const [totalScore, setTotalScore] = useState(null);
+  const [totalScore, setTotalScore] = useState();
   useEffect(() => {
     const fetchTotalScore = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/private/getScore');
+        const response = await axios.get('http://localhost:5000/api/private/getScore/2');
         const data = response.data;
-        setTotalScore(data.totalScore);
+        setTotalScore(data.totalscore);
       } catch (error) {
         console.error('Error fetching total score:', error.message);
       }
@@ -44,13 +44,23 @@ function Home(props) {
           console.log("Unable to establish connection with Solace Cloud, see above logs for more details.", error);
         });
     }
+    const askForTasks = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/testing/scheduledTasks');
+      } catch (error) {
+        console.error('Error fetching leaderboard data:', error.message);
+      }
+    }
+    if (tasks.length === 0) {
+      askForTasks();
+    }
   };
 
   return (
     <div>
       <button onClick={handleConnectClick}>{connected ? 'Disconnect' : 'Connect'}</button>
       <h5 className="mx-5 my-5">
-        Sustainability Points: {totalScore !== null ? totalScore : 'Loading...'}
+        Sustainability Points: {totalScore ? totalScore : 'Loading...'}
       </h5>
       <div className="row">
         <div className="col-5 mx-5">
