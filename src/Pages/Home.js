@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Msg from '../utils/Msg';
 
 function Home() {
   const [totalScore, setTotalScore] = useState(null);
-
   useEffect(() => {
     const fetchTotalScore = async () => {
       try {
@@ -22,9 +22,9 @@ function Home() {
 
   return (
     <div>
-      <h5 className="mx-5 my-5">
-        Sustainability Points: {totalScore !== null ? totalScore : 'Loading...'}
-      </h5>
+      <div>
+        <Msg></Msg>
+      </div>
       <div className="row">
         <div className="col-5 mx-5">
           <div className="card">
