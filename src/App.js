@@ -27,6 +27,7 @@ function App() {
           <Route path="/tips" element={<Tips />} />
         </Routes>
       </div>
+
     </Router>
   );
 }
